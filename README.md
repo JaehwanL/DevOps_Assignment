@@ -65,4 +65,5 @@
 
 ### 결과
 * 별도의 도메인을 생성하지 않았기 때문에 ALB의 DNS를 직접 호출해봅니다.
-![스크린샷 2025-01-12 오후 5 51 26](https://github.com/user-attachments/assets/00b21fdc-2622-4032-b05e-9de04fd6038b)
+![image](https://github.com/user-attachments/assets/8ca3bf82-f956-48a5-bb59-87c5fd44d321)
+
