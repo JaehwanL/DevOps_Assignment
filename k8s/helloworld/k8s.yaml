@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaehwan-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaehwan-helloworld
+  template:
+    metadata:
+      labels:
+        app: jaehwan-helloworld
+    spec:
+      containers:
+      - name: jaehwan-helloworld
+        image: 164828680675.dkr.ecr.ap-northeast-2.amazonaws.com/jaehwan-helloworld:latest
+        ports:
+        - containerPort: 8080
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: "nodegroup"
+                operator: In
+                values:
+                - "worker"
+              - key: "topology.kubernetes.io/zone"
+                operator: In
+                values:
+                - "ap-northeast-2a"
+                - "ap-northeast-2c"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaehwan-helloworld
+spec:
+  type: NodePort
+  ports:
+    - port: 30080
+      targetPort: 8080
+  selector:
+    app: jaehwan-helloworld
+---
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: jaehwan-helloworld
+spec:
+  serviceRef:
+    name: jaehwan-helloworld
+    port: 30080
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-2:164828680675:targetgroup/test-tg/6fe74fb3e2a36746
+---
