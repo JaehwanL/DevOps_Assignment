@@ -19,13 +19,13 @@ spec:
         - containerPort: 8080
       affinity:
         nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
+          requiredDuringSchedulingRequiredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: "nodegroup"
+              - key: "zone"
                 operator: In
                 values:
-                - "worker"
+                - "private"
               - key: "topology.kubernetes.io/zone"
                 operator: In
                 values:

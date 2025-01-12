@@ -40,7 +40,8 @@ module "eks" {
     worker = {
       name = "worker"
       labels = {
-        nodegroup = "worker"
+        nodegroup = "worker",
+        zone = "private"
       }
 
       instance_types = ["t3.small"]
