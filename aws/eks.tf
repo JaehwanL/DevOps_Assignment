@@ -41,8 +41,9 @@ module "eks" {
       name = "worker"
       labels = {
         nodegroup = "worker",
-        zone = "private"
+        zone      = "private"
       }
+      subnet_ids = module.vpc.private_subnets
 
       instance_types = ["t3.small"]
       capacity_type  = "SPOT"
