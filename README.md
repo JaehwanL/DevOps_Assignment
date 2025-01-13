@@ -64,6 +64,6 @@
 > ingress와 clusterIP 형식의 service를 생성하여 path 단위로 라우팅 진행
 
 ### 결과
-* 별도의 도메인을 생성하지 않았기 때문에 ALB의 DNS를 직접 호출해봅니다.
+* 별도의 도메인을 연결하지 않았기 때문에 ALB의 DNS를 직접 호출해봅니다.
 ![image](https://github.com/user-attachments/assets/8ca3bf82-f956-48a5-bb59-87c5fd44d321)
 
