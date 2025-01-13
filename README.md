@@ -55,6 +55,7 @@
 * `services/helloworld/Dockerfile`을 사용해 Docker build 하였습니다.
 * 빌드된 이미지를 ecr에 push 합니다.
 * `services/helloworld/k8s.yaml`에 해당 application을 배포하기 위한 manifest를 명세하였습니다.
+  * node label 기반으로 affinity 설정을 진행하였습니다. `zone: private`으로 라벨링 되어있는 노드의 a, c az에 배포되도록 설정하였습니다.
   * 1개의 application만 배포될 것이기 때문에 service를 NodePort 형식으로 생성하였습니다.
   * TargetGroupBinding(aws loadbalancer controller)을 사용하여 생성해둔 TargetGroup에 매칭하였습니다.
 
